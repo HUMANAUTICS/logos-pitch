@@ -482,18 +482,46 @@
       color: var(--brand-gold);
     }
 
-    .arch-grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      height: 100%;
+    .core-hub {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--bg-panel) 0%, #2A3C5C 100%);
+      border: 3px solid var(--brand-gold);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(181, 164, 98, 0.15);
+      z-index: 10;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      cursor: default;
     }
 
-    .arch-grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      height: 100%;
+    .core-hub:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px rgba(181, 164, 98, 0.35);
+      border-color: var(--brand-cream);
+    }
+
+    .left-connector, .right-connector {
+      position: absolute;
+      top: 50%;
+      width: 45px;
+      height: 2px;
+      z-index: 1;
+      transform: translateY(-50%);
+    }
+
+    .left-connector {
+      left: -20px;
+      background: linear-gradient(to right, #94A3B8, var(--brand-gold));
+    }
+
+    .right-connector {
+      right: -20px;
+      background: linear-gradient(to right, var(--brand-gold), var(--brand-gold));
     }
 
     .arch-group .card {
@@ -632,38 +660,52 @@
       <div class="slide" data-slide="4">
         <span class="slide-subtitle">Product Architecture</span>
         <h2 class="slide-title">The Five Pillars of Logos Tax Systems</h2>
-        <div class="arch-flow-container">
+        <div class="arch-flow-container" style="display: flex; gap: 30px; margin-top: 25px; align-items: center; height: 65%;">
+          
           <!-- INPUTS -->
-          <div class="arch-group inputs">
+          <div class="arch-group inputs" style="flex: 2; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding-top: 30px; gap: 10px;">
             <div class="arch-group-label">Input Layer</div>
-            <div class="arch-grid-3">
-              <div class="card">
-                <h3>Vault</h3>
-                <p>Secure, end-to-end encrypted storage for every document your business generates—tax filings, incorporation records, AI chat sessions, and more.</p>
-              </div>
-              <div class="card">
-                <h3>Ledger</h3>
-                <p>Permanent timeline showing business operations and CPA-signed filing events, ready for audits and business valuations.</p>
-              </div>
-              <div class="card">
-                <h3>Citadel</h3>
-                <p>Integrations engine connecting Plaid, QBO, Payroll, and direct IRS transcripts to ingest active financial records in real-time.</p>
-              </div>
+            <div class="card" style="padding: 15px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+              <h3 style="font-size: 1.25rem; margin-bottom: 6px;">Vault</h3>
+              <p style="font-size: 0.8rem; line-height: 1.4; margin: 0;">Secure, end-to-end encrypted storage for every document your business generates—tax filings, incorporation records, AI chat sessions, and more.</p>
+            </div>
+            <div class="card" style="padding: 15px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+              <h3 style="font-size: 1.25rem; margin-bottom: 6px;">Ledger</h3>
+              <p style="font-size: 0.8rem; line-height: 1.4; margin: 0;">Permanent timeline showing business operations and CPA-signed filing events, ready for audits and business valuations.</p>
+            </div>
+            <div class="card" style="padding: 15px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+              <h3 style="font-size: 1.25rem; margin-bottom: 6px;">Citadel</h3>
+              <p style="font-size: 0.8rem; line-height: 1.4; margin: 0;">Integrations engine connecting Plaid, QBO, Payroll, and direct IRS transcripts to ingest active financial records in real-time.</p>
             </div>
           </div>
 
+          <!-- CENTER: LOGOS SYSTEM CORE -->
+          <div class="arch-center-core" style="flex: 1.2; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; height: 100%;">
+            <div class="core-hub">
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 12px;">
+                <span style="display: block; height: 2px; width: 28px; background: var(--brand-cream);"></span>
+                <span style="display: block; height: 2px; width: 18px; background: var(--brand-gold);"></span>
+                <span style="display: block; height: 2px; width: 28px; background: var(--brand-cream);"></span>
+              </div>
+              <span style="font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; color: var(--brand-cream); line-height: 1.2; padding: 0 10px;">Logos Tax Systems</span>
+              <span style="font-size: 0.65rem; text-transform: uppercase; color: var(--brand-gold); letter-spacing: 1.5px; margin-top: 6px; font-weight: 600;">System Core</span>
+            </div>
+            <div class="left-connector"></div>
+            <div class="right-connector"></div>
+          </div>
+
           <!-- OUTPUTS -->
-          <div class="arch-group outputs">
+          <div class="arch-group outputs" style="flex: 2; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding-top: 30px; gap: 10px;">
             <div class="arch-group-label">Output Layer</div>
-            <div class="arch-grid-2">
-              <div class="card">
-                <h3>Logos</h3>
-                <p>Conversational AI tax strategist analyzing documents and live feeds for deduction signals 24/7.</p>
-              </div>
-              <div class="card">
-                <h3>Enchiridion</h3>
-                <p>The playbook: Synthesizes your profile into dollar-savings estimates, step-by-step guidance, and tax code references.</p>
-              </div>
+            <div class="card" style="padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: center; margin-bottom: 10px;">
+              <h3 style="font-size: 1.3rem; margin-bottom: 4px;">Logos</h3>
+              <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 10px; font-weight: 600;">AI TaxPro on-Demand</div>
+              <p style="font-size: 0.85rem; line-height: 1.4; margin: 0;">Conversational AI tax strategist analyzing documents and live feeds for deduction signals 24/7.</p>
+            </div>
+            <div class="card" style="padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+              <h3 style="font-size: 1.3rem; margin-bottom: 4px;">Enchiridion</h3>
+              <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 10px; font-weight: 600;">Tax Strategies</div>
+              <p style="font-size: 0.85rem; line-height: 1.4; margin: 0;">The playbook: Synthesizes your profile into dollar-savings estimates, step-by-step guidance, and tax code references.</p>
             </div>
           </div>
         </div>
@@ -679,17 +721,21 @@
               Our proprietary compliance engine orchestrates live financial data, regulatory feeds, and legal precedent:
             </p>
             <ul style="list-style: none; margin-bottom: 25px;">
-              <li style="margin-bottom: 12px; display: flex; gap: 10px; align-items: flex-start;">
+              <li style="margin-bottom: 10px; display: flex; gap: 10px; align-items: flex-start;">
                 <span style="color: var(--brand-gold);">✓</span>
                 <span><strong>IRS Direct Access:</strong> Pulls official tax transcript records and processes incoming IRS notices in real-time.</span>
               </li>
-              <li style="margin-bottom: 12px; display: flex; gap: 10px; align-items: flex-start;">
+              <li style="margin-bottom: 10px; display: flex; gap: 10px; align-items: flex-start;">
                 <span style="color: var(--brand-gold);">✓</span>
                 <span><strong>Live Legal Feed & RAG:</strong> Ingests live court proceeding feeds and indexes 10,000+ legal precedents to ground strategy in current tax law.</span>
               </li>
-              <li style="margin-bottom: 12px; display: flex; gap: 10px; align-items: flex-start;">
+              <li style="margin-bottom: 10px; display: flex; gap: 10px; align-items: flex-start;">
                 <span style="color: var(--brand-gold);">✓</span>
                 <span><strong>Proactive Compliance Monitor:</strong> Continuously scans transaction trends and financial patterns to flag potential audit risks early.</span>
+              </li>
+              <li style="margin-bottom: 10px; display: flex; gap: 10px; align-items: flex-start;">
+                <span style="color: var(--brand-gold);">✓</span>
+                <span><strong>Automated Document Intelligence:</strong> Instantly parses tax PDFs, validates document claims, extracts core formation variables, and reconciles conflicts.</span>
               </li>
             </ul>
           </div>
@@ -697,10 +743,11 @@
           <div>
             <!-- Visual Pipeline Diagram -->
             <div class="fusion-container">
-              <div style="display: flex; flex-direction: column; gap: 15px;">
-                <div class="fusion-node" style="font-size: 0.85rem;">IRS Transcripts & Notices</div>
-                <div class="fusion-node" style="font-size: 0.85rem;">Live Legal API Feed</div>
-                <div class="fusion-node" style="font-size: 0.85rem;">QBO & Bank Feeds</div>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div class="fusion-node" style="font-size: 0.8rem; padding: 12px 15px; width: 185px;">IRS Transcripts & Notices</div>
+                <div class="fusion-node" style="font-size: 0.8rem; padding: 12px 15px; width: 185px;">Live Legal API Feed</div>
+                <div class="fusion-node" style="font-size: 0.8rem; padding: 12px 15px; width: 185px;">QBO & Bank Feeds</div>
+                <div class="fusion-node" style="font-size: 0.8rem; padding: 12px 15px; width: 185px; border-color: var(--brand-gold); color: var(--brand-gold);">Corporate Documents & PDFs</div>
               </div>
               <div class="fusion-arrow"></div>
               <div class="fusion-center">
@@ -708,9 +755,9 @@
                 <div style="font-size: 0.75rem; margin-top: 5px; color: var(--text-muted);">Compliance Synthesis</div>
               </div>
               <div class="fusion-arrow"></div>
-              <div class="fusion-node" style="border-color: var(--brand-gold); font-size: 0.85rem;">
-                <strong style="color: var(--brand-gold); display: block; margin-bottom: 4px;">Defense Reports</strong>
-                <span>Notice Analysis & Action Plans</span>
+              <div class="fusion-node" style="border-color: var(--brand-gold); font-size: 0.8rem; padding: 12px 15px; width: 190px;">
+                <strong style="color: var(--brand-gold); display: block; margin-bottom: 4px;">Defense & Strategies</strong>
+                <span>Audited Tax Profile & Action Playbooks</span>
               </div>
             </div>
           </div>
@@ -764,7 +811,7 @@
               <div class="flow-num">5</div>
               <div>
                 <strong style="color: var(--brand-cream);">A Corpus That Compounds Per Business</strong>
-                <p style="font-size: 0.9rem; margin-top: 2px;">The system gets smarter about this specific business the longer it's used.</p>
+                <p style="font-size: 0.9rem; margin-top: 2px;">Each document upload is parsed and reconciled into a structured, audited tax profile context, creating a permanent intelligence layer.</p>
               </div>
             </div>
           </div>
@@ -981,21 +1028,21 @@
           <div>
             <h3 style="font-size: 1.25rem; color: var(--brand-gold); margin-bottom: 15px;">Completed Architecture</h3>
             <ul style="list-style: none;">
-              <li style="margin-bottom: 10px; display: flex; gap: 8px;">
+              <li style="margin-bottom: 12px; display: flex; gap: 8px; align-items: flex-start;">
                 <span style="color: var(--accent-green);">✔</span>
-                <span>Modular `ITaxStrategy` calculators configured for active use.</span>
+                <span><strong>Automated Document Intelligence:</strong> PDF parsing, metadata extraction (EIN, Entity Name, State, Date), and active context-conflict resolution.</span>
               </li>
-              <li style="margin-bottom: 10px; display: flex; gap: 8px;">
+              <li style="margin-bottom: 12px; display: flex; gap: 8px; align-items: flex-start;">
                 <span style="color: var(--accent-green);">✔</span>
-                <span>Four distinct repos configured with Sentry & PostHog telemetry integrations.</span>
+                <span><strong>Audited CPA Portal:</strong> Role-based access logging and client profile gating to protect sensitive company records.</span>
               </li>
-              <li style="margin-bottom: 10px; display: flex; gap: 8px;">
+              <li style="margin-bottom: 12px; display: flex; gap: 8px; align-items: flex-start;">
                 <span style="color: var(--accent-green);">✔</span>
-                <span>CPA Marketplace & Client Matching database migrations implemented.</span>
+                <span><strong>System Observability Console:</strong> Live 10-endpoint health monitoring dashboard with GCP Workload Identity integrations.</span>
               </li>
-              <li style="margin-bottom: 10px; display: flex; gap: 8px;">
+              <li style="margin-bottom: 12px; display: flex; gap: 8px; align-items: flex-start;">
                 <span style="color: var(--accent-green);">✔</span>
-                <span>Full-page conversational AI Advisor (Logos) client interface.</span>
+                <span><strong>Modular `ITaxStrategy` Engine:</strong> Full-page conversational AI Advisor (Logos) client interface.</span>
               </li>
             </ul>
           </div>
@@ -1075,14 +1122,14 @@
       2: "Address the industry reality: Tax pros aren't bad actors—they're operating in a reactive state due to tight IRS deadlines and last-minute document collection. Meanwhile, business owners rely on CPA portals rather than maintaining their own archives. If a Tax Pro retires, closes shop, or passes away, portal access expires quickly—leaving owners at risk of losing history. Because gathering files and changing providers feels like a massive lift, owners default to staying put. Logos removes the switching lift and guarantees document continuity.",
       3: "Focus on the core outcome: Business owners should own their Tax Intelligence. Logos creates a permanent system of record encompassing documents, planning decisions, implementation history, and AI insights—so tax knowledge stays with the business, not a particular advisor. Owners can review AI recommendations independently or validate them with their existing tax pro or a Logos network expert.",
       4: "Describe the product design pillars, grouped into Input and Output layers. The Input layer feeds raw records into the system, comprising Vault for secure document storage, Ledger for CPA-signed execution events, and Citadel for real-time integrations. The Output layer delivers our intelligence, featuring Logos as the conversational AI strategist and Enchiridion as the actionable playbook.",
-      5: "Highlight the compliance engineering engine: We combine direct IRS transcript APIs, a live court proceeding API feed paired with a 10,000-case legal RAG database, and continuous transaction monitoring to catch audit trends early. When IRS notices arrive, Logos generates an actionable Notice Defense Report—explaining what it means, what to do, and linking directly to required files.",
+      5: "Highlight the compliance engineering engine. We orchestrate four inputs: transcripts, court-precedent RAG, transaction feeds, and now our automated document intelligence pipeline. This parses raw tax PDFs, runs LLM-based claim-validation, extracts core variables like EINs and formation dates, and reconciles profile conflicts to build an audited user tax context. It outputs not just Notice Defense, but fully audited profiles and actionable playbooks.",
       6: "Make the moat argument explicitly: IRS transcript access, court-record feeds, and legal precedent databases are infrastructure—competitors can eventually license the same things. Our defensibility is the layer above the data: durable reasoning instead of ephemeral chat, a persistent Tax OS instead of one-time prep, explainable strategy objects that survive across years, human-in-the-loop execution through our professional network, and a user-specific intelligence corpus that compounds the longer a business stays with us.",
       7: "Reiterate our relationship with tax professionals: Logos does not replace CPAs—it connects business owners with expert execution more efficiently. Once Logos identifies a tax strategy, the owner decides how to proceed: self-implement, work with their existing CPA, or connect with a Logos network expert. Every strategy, document, approval, and execution step is recorded into their permanent Tax Intelligence.",
       8: "Review business model & monetization: Three distinct tiers aligned with customer value. Free tier lets business owners discover tax opportunities and calculate potential ROI; Pro tier unlocks active financial account sync, AI strategy recommendations, guided workflows, and collaboration tools; Enterprise tier scales Tax Intelligence across multi-entity portfolios and accounting advisor networks.",
       9: "The financial comparison: 10,000% ROI. Standard tax planning costs $15K-$35K and takes 4 weeks. Logos achieves optimization in 30 seconds for $299/mo. Churn is predicted under 5% because the Ledger forms an essential permanent timeline.",
       10: "Break down the TAM: A $15 billion market opportunity. Highlight our focus on the U.S. S-Corp and biotech startups segment (SOM: $800M). These customers have complex strategic tax needs but lack direct in-house support.",
       11: "Explain the team pedigree. David Gillilan brings 20+ years of growth leadership and CPA firm bd execution. Abhishek Nagaraja built the Logos platform end-to-end—AI engine, document pipeline, marketplace, Ledger—drawing on enterprise SaaS, fintech, and AI-native product experience. Address the personal mission: David's father passed away suddenly when he was 37, and his mother had to rebuild with no guidance. This is why he founded Logos.",
-      12: "Review current traction. This is not a concept. Explain that modular strategies are operational, Sentry/PostHog observability is active, and our multi-repo platform is fully structured and running. Outline future phases.",
+      12: "Review current traction. Show that this is not just a concept. Highlight our concrete engineering achievements: our automated document intelligence pipeline that parses, validates, and extracts core tax variables with conflict resolution; our secure CPA workspace with role-based access logs and client gating; and our live 10-endpoint observability health dashboard using GCP Workload Identity. The platform architecture is active and ready for phase 3 portal scaling.",
       13: "The Ask: $2.5M Seed round. Explain the allocation: 60% engineering/AI, 25% marketplace expansion, and 15% operations and licensing. Invite questions from the room."
     };
 
