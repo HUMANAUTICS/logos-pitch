@@ -420,6 +420,90 @@
       border-left: 3px solid var(--brand-gold);
       padding-left: 20px;
     }
+
+    /* PRODUCT ARCHITECTURE SLIDE STYLES */
+    .arch-flow-container {
+      display: flex;
+      gap: 25px;
+      margin-top: 30px;
+      align-items: stretch;
+    }
+
+    .arch-group {
+      display: flex;
+      flex-direction: column;
+      background: rgba(28, 40, 64, 0.25);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 28px 20px 20px 20px;
+      position: relative;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .arch-group:hover {
+      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .arch-group-label {
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background: var(--bg-dark);
+      padding: 2px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+    }
+
+    .arch-group.inputs {
+      flex: 3;
+      border-top: 2px solid var(--brand-gold);
+    }
+
+    .arch-group.inputs .arch-group-label {
+      border: 1px solid var(--brand-gold);
+      color: var(--brand-gold);
+    }
+
+    .arch-group.outputs {
+      flex: 2;
+      border-top: 2px solid var(--accent-green);
+    }
+
+    .arch-group.outputs .arch-group-label {
+      border: 1px solid var(--accent-green);
+      color: var(--accent-green);
+    }
+
+    .arch-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      height: 100%;
+    }
+
+    .arch-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      height: 100%;
+    }
+
+    .arch-group .card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 20px;
+      background-color: var(--bg-panel);
+    }
+
+    .arch-group.outputs .card h3 {
+      color: var(--accent-green);
+    }
   </style>
 </head>
 <body>
@@ -544,26 +628,39 @@
       <div class="slide" data-slide="4">
         <span class="slide-subtitle">Product Architecture</span>
         <h2 class="slide-title">The Five Pillars of Logos Tax Systems</h2>
-        <div class="grid-5" style="margin-top: 20px;">
-          <div class="card">
-            <h3>Citadel</h3>
-            <p>Integrations engine connecting Plaid, QBO, Payroll, and direct IRS transcripts to ingest active financial records in real-time.</p>
+        <div class="arch-flow-container">
+          <!-- INPUTS -->
+          <div class="arch-group inputs">
+            <div class="arch-group-label">Input Layer</div>
+            <div class="arch-grid-3">
+              <div class="card">
+                <h3>Vault</h3>
+                <p>Secure, end-to-end encrypted storage for every document your business generates—tax filings, incorporation records, AI chat sessions, and more.</p>
+              </div>
+              <div class="card">
+                <h3>Ledger</h3>
+                <p>Permanent timeline showing business operations and CPA-signed filing events, ready for audits and business valuations.</p>
+              </div>
+              <div class="card">
+                <h3>Citadel</h3>
+                <p>Integrations engine connecting Plaid, QBO, Payroll, and direct IRS transcripts to ingest active financial records in real-time.</p>
+              </div>
+            </div>
           </div>
-          <div class="card">
-            <h3>Logos</h3>
-            <p>Conversational AI tax strategist analyzing documents and live feeds for deduction signals 24/7.</p>
-          </div>
-          <div class="card">
-            <h3>Enchiridion</h3>
-            <p>The playbook: Synthesizes your profile into dollar-savings estimates, step-by-step guidance, and tax code references.</p>
-          </div>
-          <div class="card">
-            <h3>Ledger</h3>
-            <p>Permanent timeline showing business operations and CPA-signed filing events, ready for audits and business valuations.</p>
-          </div>
-          <div class="card">
-            <h3>Vault</h3>
-            <p>Secure, end-to-end encrypted storage for every document your business generates—tax filings, incorporation records, AI chat sessions, and more.</p>
+
+          <!-- OUTPUTS -->
+          <div class="arch-group outputs">
+            <div class="arch-group-label">Output Layer</div>
+            <div class="arch-grid-2">
+              <div class="card">
+                <h3>Logos</h3>
+                <p>Conversational AI tax strategist analyzing documents and live feeds for deduction signals 24/7.</p>
+              </div>
+              <div class="card">
+                <h3>Enchiridion</h3>
+                <p>The playbook: Synthesizes your profile into dollar-savings estimates, step-by-step guidance, and tax code references.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -973,7 +1070,7 @@
       1: "Welcome investors. Set the baseline: Logos is NOT a standard tax preparer like TurboTax, and it's NOT a traditional CPA firm. We are the Tax Operating System for Business Owners—AI powered, Tax Pro implemented, and business owner owned. Our mission is to shift control of tax history from accounting databases back to the business owner.",
       2: "Address the industry reality: Tax pros aren't bad actors—they're operating in a reactive state due to tight IRS deadlines and last-minute document collection. Meanwhile, business owners rely on CPA portals rather than maintaining their own archives. If a Tax Pro retires, closes shop, or passes away, portal access expires quickly—leaving owners at risk of losing history. Because gathering files and changing providers feels like a massive lift, owners default to staying put. Logos removes the switching lift and guarantees document continuity.",
       3: "Focus on the core outcome: Business owners should own their Tax Intelligence. Logos creates a permanent system of record encompassing documents, planning decisions, implementation history, and AI insights—so tax knowledge stays with the business, not a particular advisor. Owners can review AI recommendations independently or validate them with their existing tax pro or a Logos network expert.",
-      4: "Describe the product design pillars: Citadel feeds raw entries into the platform; Logos acts as the continuous AI strategist; Enchiridion packages opportunities into actionable playbooks; Ledger records CPA executions; Vault secure houses original documents.",
+      4: "Describe the product design pillars, grouped into Input and Output layers. The Input layer feeds raw records into the system, comprising Vault for secure document storage, Ledger for CPA-signed execution events, and Citadel for real-time integrations. The Output layer delivers our intelligence, featuring Logos as the conversational AI strategist and Enchiridion as the actionable playbook.",
       5: "Highlight the compliance engineering engine: We combine direct IRS transcript APIs, a live court proceeding API feed paired with a 10,000-case legal RAG database, and continuous transaction monitoring to catch audit trends early. When IRS notices arrive, Logos generates an actionable Notice Defense Report—explaining what it means, what to do, and linking directly to required files.",
       6: "Make the moat argument explicitly: IRS transcript access, court-record feeds, and legal precedent databases are infrastructure—competitors can eventually license the same things. Our defensibility is the layer above the data: durable reasoning instead of ephemeral chat, a persistent Tax OS instead of one-time prep, explainable strategy objects that survive across years, human-in-the-loop execution through our professional network, and a user-specific intelligence corpus that compounds the longer a business stays with us.",
       7: "Reiterate our relationship with tax professionals: Logos does not replace CPAs—it connects business owners with expert execution more efficiently. Once Logos identifies a tax strategy, the owner decides how to proceed: self-implement, work with their existing CPA, or connect with a Logos network expert. Every strategy, document, approval, and execution step is recorded into their permanent Tax Intelligence.",
