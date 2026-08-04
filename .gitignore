@@ -1,0 +1,7 @@
+# Ignore generated presentation files
+*.pdf
+*.pptx
+
+# Python cache files
+__pycache__/
+*.pyc
