@@ -544,6 +544,59 @@
     .arch-group.outputs .card h3 {
       color: var(--brand-gold);
     }
+
+    /* PRINT STYLES */
+    @media print {
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+      body {
+        overflow: visible !important;
+        height: auto !important;
+        width: auto !important;
+        background-color: var(--bg-dark) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .deck-container {
+        height: auto !important;
+        width: auto !important;
+        display: block !important;
+        position: relative !important;
+      }
+      .progress-bar-container,
+      .deck-controls,
+      .notes-drawer,
+      .nav-buttons,
+      .slide-counter {
+        display: none !important;
+      }
+      .slides-wrapper {
+        overflow: visible !important;
+        display: block !important;
+        height: auto !important;
+        position: relative !important;
+      }
+      .slide {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: none !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        padding: 60px 80px 100px 80px !important;
+        margin: 0 !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1065,30 +1118,33 @@
             <div>
               <h3 style="font-size: 1.25rem; color: var(--brand-gold); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px;">The Disruption Matrix</h3>
               
+              <!-- Table Headers -->
+              <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 2px solid var(--border-color); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; color: var(--text-muted); margin-bottom: 5px;">
+                <span style="width: 120px;">Metric</span>
+                <span style="flex: 1; padding-left: 10px; color: var(--brand-gold);">With Logos</span>
+                <span style="width: 140px; text-align: right;">Without Logos</span>
+              </div>
+
               <!-- Metric Row 1: Cost -->
               <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border-color);">
                 <span style="font-size: 0.9rem; color: var(--brand-cream); font-weight: 600; width: 120px;">Planning Fee</span>
-                <span style="font-size: 0.85rem; color: #EF4444; text-decoration: line-through; flex: 1; text-align: left; padding-left: 10px;">$15K – $35K</span>
-                 <span style="font-size: 1.05rem; color: var(--brand-gold); font-weight: 700; width: 140px; text-align: right;">Flat Monthly SaaS</span>
+                <span style="font-size: 1.05rem; color: var(--brand-gold); font-weight: 700; flex: 1; text-align: left; padding-left: 10px;">Flat Monthly SaaS</span>
+                <span style="font-size: 0.85rem; color: #EF4444; text-decoration: line-through; width: 140px; text-align: right;">$15K – $35K</span>
               </div>
               
               <!-- Metric Row 2: Turnaround Time -->
               <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border-color);">
                 <span style="font-size: 0.9rem; color: var(--brand-cream); font-weight: 600; width: 120px;">Turnaround</span>
-                <span style="font-size: 0.85rem; color: var(--text-muted); flex: 1; text-align: left; padding-left: 10px;">4 Weeks</span>
-                <span style="font-size: 1.05rem; color: var(--brand-gold); font-weight: 700; width: 130px; text-align: right;">30 Seconds</span>
+                <span style="font-size: 1.05rem; color: var(--brand-gold); font-weight: 700; flex: 1; text-align: left; padding-left: 10px;">30 Seconds</span>
+                <span style="font-size: 0.85rem; color: var(--text-muted); width: 140px; text-align: right;">4 Weeks</span>
               </div>
               
               <!-- Metric Row 3: Strategy Modality -->
               <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0;">
                 <span style="font-size: 0.9rem; color: var(--brand-cream); font-weight: 600; width: 120px;">Modality</span>
-                <span style="font-size: 0.85rem; color: var(--text-muted); flex: 1; text-align: left; padding-left: 10px;">Static / Annual</span>
-                <span style="font-size: 1.05rem; color: var(--brand-gold); font-weight: 700; width: 130px; text-align: right;">Active 24/7 Scan</span>
+                <span style="font-size: 1.05rem; color: var(--brand-gold); font-weight: 700; flex: 1; text-align: left; padding-left: 10px;">Active 24/7 Scan</span>
+                <span style="font-size: 0.85rem; color: var(--text-muted); width: 140px; text-align: right;">Static / Annual</span>
               </div>
-            </div>
-            
-            <div style="background: rgba(181, 164, 98, 0.04); border: 1px solid rgba(181, 164, 98, 0.2); padding: 10px 15px; border-radius: 6px; font-size: 0.85rem; text-align: center; color: var(--brand-gold); font-weight: 600; margin-top: 15px;">
-              ⚡ 10,000% ROI Disruption for the SMB Owner
             </div>
           </div>
           
@@ -1130,7 +1186,7 @@
             </p>
             <div style="background-color: var(--bg-panel); padding: 25px; border-radius: 8px; border: 1px solid var(--border-color);">
               <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Primary Target SOM</h3>
-              <p style="margin-bottom: 15px;"><strong>U.S. S-Corps, Biotech software founders, and SaaS entities</strong> with annual revenues between $200K and $5M. High-margin tax strategies (QSBS, R&D credits) are critical for these entities.</p>
+              <p style="margin-bottom: 15px;"><strong>Business owners, tax firms, real estate investors, and high-earning contract professionals</strong> with annual revenues between $200K and $5M. High-margin tax strategies (QSBS, R&D credits) are critical for these entities.</p>
               <div style="height: 1px; background-color: var(--border-color); margin: 15px 0;"></div>
               <p style="font-size: 0.95rem; color: var(--brand-gold);">CPAs represent a second distribution network, serving as referrals and white-label purchasers.</p>
             </div>
@@ -1152,7 +1208,7 @@
                 <div style="position: relative; width: 130px; height: 130px; border-radius: 50%; border: 3px solid var(--brand-gold); background: linear-gradient(135deg, var(--bg-panel) 0%, #1E2B43 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 0 30px rgba(181, 164, 98, 0.25); z-index: 10; transition: transform 0.3s ease; cursor: default;">
                   <span style="font-size: 0.7rem; text-transform: uppercase; color: var(--brand-gold); font-weight: 800; letter-spacing: 1px; margin-bottom: 2px;">SOM</span>
                   <span style="font-family: var(--font-serif); font-size: 1.7rem; font-weight: 800; color: var(--brand-cream); line-height: 1;">$800M</span>
-                  <span style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; margin-top: 5px; line-height: 1.2; font-weight: 700;">S-Corp Founders</span>
+                  <span style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; margin-top: 5px; line-height: 1.2; font-weight: 700;">Core Segments</span>
                 </div>
                 
               </div>
