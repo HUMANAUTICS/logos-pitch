@@ -236,12 +236,13 @@
     /* SLIDE 4: FIVE PILLARS — the one diagram worth keeping */
     .arch-flow-container {
       display: flex;
-      gap: 30px;
-      margin-top: 40px;
+      gap: 24px;
+      margin-top: 24px;
       align-items: center;
-      height: 55%;
+      height: 380px;
       width: 100%;
-      max-width: 1200px;
+      max-width: 1150px;
+      flex-shrink: 0;
     }
 
     .arch-group {
@@ -250,12 +251,12 @@
       background: rgba(28, 40, 64, 0.25);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      padding: 32px 20px 20px 20px;
+      padding: 24px 16px 14px 16px;
       position: relative;
       flex: 2;
       height: 100%;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
     }
 
     .arch-group-label {
@@ -294,8 +295,9 @@
       background-color: var(--bg-panel);
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 18px;
+      padding: 10px;
       flex: 1;
+      min-height: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -303,10 +305,57 @@
       text-align: center;
     }
 
+    .pillar-icon {
+      width: 20px;
+      height: 20px;
+      color: #94A3B8;
+      margin-bottom: 5px;
+      flex-shrink: 0;
+    }
+
+    .arch-group.outputs .pillar-icon {
+      color: var(--brand-gold);
+    }
+
+    .flow-arrow {
+      font-size: 1.8rem;
+      color: var(--brand-gold);
+      line-height: 1;
+    }
+
     .pillar-card h3 {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       color: var(--brand-cream);
-      margin-bottom: 4px;
+      margin-bottom: 3px;
+    }
+
+    /* BULLET LISTS — used on problem/solution/knowledge-base/moat slides */
+    .bullet-list {
+      list-style: none;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .bullet-list li {
+      font-size: 1.55rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+      font-weight: 300;
+      padding-left: 38px;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .bullet-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--brand-gold);
     }
 
     .arch-group.outputs .pillar-card h3 {
@@ -314,16 +363,17 @@
     }
 
     .pillar-card span {
-      font-size: 0.85rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       color: var(--text-muted);
       font-weight: 600;
+      line-height: 1.3;
     }
 
     .core-hub {
-      width: 170px;
-      height: 170px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--bg-panel) 0%, #2A3C5C 100%);
       border: 3px solid var(--brand-gold);
@@ -459,6 +509,89 @@
       font-family: var(--font-sans);
     }
 
+    /* SLIDE 9: PRICING TIERS */
+    .tier-row {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .tier-card {
+      background: rgba(28, 40, 64, 0.35);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 34px 40px;
+      min-width: 200px;
+      position: relative;
+    }
+
+    .tier-card.featured {
+      border-color: var(--brand-gold);
+      background: rgba(181, 164, 98, 0.06);
+      box-shadow: 0 0 25px rgba(181, 164, 98, 0.12);
+      transform: translateY(-8px);
+    }
+
+    .tier-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--brand-gold);
+      color: var(--bg-dark);
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .tier-name {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--brand-cream);
+      margin-bottom: 10px;
+    }
+
+    .tier-card.featured .tier-name {
+      color: var(--brand-gold);
+    }
+
+    .tier-tag {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    /* QR CODE BLOCKS */
+    .qr-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .qr-block img {
+      width: 130px;
+      height: 130px;
+      background: var(--brand-cream);
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .qr-caption {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
     /* SLIDE 1: BADGE PILL */
     .badge-pill {
       display: inline-block;
@@ -561,8 +694,13 @@
       <!-- SLIDE 2: THE PROBLEM -->
       <div class="slide" data-slide="2">
         <span class="slide-subtitle">The Core Problem</span>
-        <h2 class="big-headline">Your Tax Knowledge Disappears When Your Accountant Does</h2>
-        <p class="one-liner">Switch CPAs, retire, or lose touch—and your business loses years of tax history overnight.</p>
+        <h2 class="big-headline" style="font-size: 3.6rem; margin-bottom: 30px;">Your Tax Knowledge Disappears When Your Accountant Does</h2>
+        <ul class="bullet-list">
+          <li>Your CPA retires or you switch—years of history vanish overnight</li>
+          <li>Documents scattered across emails, drives, and someone else's portal</li>
+          <li>Zero proactive strategy outside of filing season</li>
+          <li>Switching feels like such a hassle, most owners just overpay and stay put</li>
+        </ul>
       </div>
 
       <!-- SLIDE 3: EXISTING METHOD VS LOGOS -->
@@ -579,7 +717,7 @@
                 <div class="bar-name">Existing Method</div>
               </div>
               <div class="bar-col">
-                <div class="bar-label-value">30 Seconds</div>
+                <div class="bar-label-value">5 Minutes</div>
                 <div class="bar logos" style="height: 4%;"></div>
                 <div class="bar-name">Logos</div>
               </div>
@@ -622,32 +760,40 @@
       <!-- SLIDE 4: THE SOLUTION -->
       <div class="slide" data-slide="4">
         <span class="slide-subtitle">The Logos Solution</span>
-        <h2 class="big-headline">Your Business Should Own Its Tax Intelligence</h2>
-        <p class="one-liner">Logos keeps every document, decision, and strategy permanently—no matter who you work with.</p>
+        <h2 class="big-headline" style="font-size: 3.6rem; margin-bottom: 30px;">Your Business Should Own Its Tax Intelligence</h2>
+        <ul class="bullet-list">
+          <li>A permanent, secure record—yours forever, not your CPA's</li>
+          <li>AI-generated insights, reviewed independently or with a pro</li>
+          <li>Every decision, document, and strategy compounds year over year</li>
+        </ul>
       </div>
 
       <!-- SLIDE 4: PRODUCT ARCHITECTURE -->
       <div class="slide" data-slide="5">
-        <span class="slide-subtitle">Product Architecture</span>
-        <h2 class="big-headline" style="font-size: 3.6rem; margin-bottom: 12px;">Five Pillars. One System.</h2>
-        <p class="one-liner" style="margin-bottom: 0;">Vault, Ledger, and Citadel bring your data in—Logos and Enchiridion turn it into action.</p>
+        <span class="slide-subtitle" style="margin-bottom: 14px;">Product Architecture</span>
+        <h2 class="big-headline" style="font-size: 2.8rem; margin-bottom: 8px;">Five Pillars. One System.</h2>
+        <p class="one-liner" style="font-size: 1.2rem; margin-bottom: 0;">Vault, Ledger, and Citadel bring your data in—Logos and Enchiridion turn it into action.</p>
         <div class="arch-flow-container">
           <div class="arch-group inputs">
             <div class="arch-group-label">Input</div>
             <div class="pillar-card">
+              <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
               <h3>Vault</h3>
-              <span>Secure Storage</span>
+              <span>Secure Storage Documents</span>
             </div>
             <div class="pillar-card">
+              <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M9 12h6M9 16h6M9 8h3"/></svg>
               <h3>Ledger</h3>
               <span>Permanent Timeline</span>
             </div>
             <div class="pillar-card">
+              <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3v4M15 3v4M6 7h12l-1 5a5 5 0 0 1-10 0L6 7z"/><path d="M12 16v5"/></svg>
               <h3>Citadel</h3>
-              <span>Live Integrations</span>
+              <span>3rd Party App Integrations</span>
             </div>
           </div>
-          <div style="flex: 0 0 auto; display: flex; align-items: center; justify-content: center;">
+          <div style="flex: 0 0 auto; display: flex; align-items: center; justify-content: center; gap: 18px;">
+            <div class="flow-arrow">&#10132;</div>
             <div class="core-hub">
               <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 10px;">
                 <span style="display: block; height: 2px; width: 26px; background: var(--brand-cream);"></span>
@@ -656,16 +802,19 @@
               </div>
               <span style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; color: var(--brand-cream);">Logos Core</span>
             </div>
+            <div class="flow-arrow">&#10132;</div>
           </div>
           <div class="arch-group outputs">
             <div class="arch-group-label">Output</div>
             <div class="pillar-card">
+              <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
               <h3>Logos</h3>
-              <span>AI Tax Strategist</span>
+              <span>AI Tax Employee</span>
             </div>
             <div class="pillar-card">
+              <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
               <h3>Enchiridion</h3>
-              <span>Your Playbook</span>
+              <span>Tax Strategy Playbook</span>
             </div>
           </div>
         </div>
@@ -674,36 +823,59 @@
       <!-- SLIDE 5: ORCHESTRATION ENGINE -->
       <div class="slide" data-slide="6">
         <span class="slide-subtitle">Technology & Moat</span>
-        <h2 class="big-headline">We Don't Guess. We Know.</h2>
-        <p class="one-liner">Real-time IRS records, tax law, and your financials—combined into one live picture.</p>
+        <h2 class="big-headline" style="font-size: 3.6rem; margin-bottom: 30px;">We Don't Guess. We Know.</h2>
+        <ul class="bullet-list">
+          <li>Real-time IRS transcripts &amp; notices</li>
+          <li>The full tax code &amp; IRS publications</li>
+          <li>Live financial feeds—Plaid, QuickBooks, bank accounts</li>
+          <li>Automated document parsing &amp; validation</li>
+        </ul>
       </div>
 
       <!-- SLIDE 6: THE MOAT -->
       <div class="slide" data-slide="7">
         <span class="slide-subtitle">The Moat</span>
-        <h2 class="big-headline">Anyone Can Access the Data. Only Logos Remembers You.</h2>
-        <p class="one-liner">The longer you use Logos, the smarter and more valuable your tax intelligence becomes.</p>
+        <h2 class="big-headline" style="font-size: 3.6rem; margin-bottom: 30px;">Anyone Can Access the Data. Only Logos Remembers You.</h2>
+        <ul class="bullet-list">
+          <li>Durable reasoning—not one-off chat that disappears</li>
+          <li>Runs year-round, not just once a year</li>
+          <li>Your own intelligence, compounding the longer you stay</li>
+        </ul>
       </div>
 
       <!-- SLIDE 7: CPA ADVISOR NETWORK -->
       <div class="slide" data-slide="8">
         <span class="slide-subtitle">CPA Advisor Network</span>
-        <h2 class="big-headline">AI Finds It. A Real CPA Signs It.</h2>
+        <h2 class="big-headline">Seamless CPA Connection</h2>
         <p class="one-liner">Keep your accountant, or tap our vetted network—either way, it's documented forever.</p>
       </div>
 
       <!-- SLIDE 8: BUSINESS MODEL -->
       <div class="slide" data-slide="9">
         <span class="slide-subtitle">Business Model</span>
-        <h2 class="big-headline">Start Free. Upgrade When You're Ready.</h2>
-        <p class="one-liner">From your first deduction to full year-round strategy—one flat monthly price.</p>
+        <h2 class="big-headline" style="font-size: 3.6rem; margin-bottom: 40px;">Start Free. Upgrade When You're Ready.</h2>
+        <div class="tier-row">
+          <div class="tier-card">
+            <div class="tier-name">Free</div>
+            <div class="tier-tag">Discover Your Savings</div>
+          </div>
+          <div class="tier-card featured">
+            <div class="tier-badge">Most Popular</div>
+            <div class="tier-name">Pro</div>
+            <div class="tier-tag">Active Sync &amp; Guided Implementation</div>
+          </div>
+          <div class="tier-card">
+            <div class="tier-name">Enterprise</div>
+            <div class="tier-tag">Scale &amp; White-Label</div>
+          </div>
+        </div>
       </div>
 
       <!-- SLIDE 9: REAL SAVINGS (reframed from ROI/Unit Economics) -->
       <div class="slide" data-slide="10">
         <span class="slide-subtitle">What You Get</span>
         <h2 class="big-headline">Minutes, Not Months</h2>
-        <p class="one-liner">What used to take a $15K–35K advisor and four weeks now takes Logos 30 seconds.</p>
+        <p class="one-liner">What used to take a $15K–35K advisor and four weeks now takes Logos 5 minutes.</p>
       </div>
 
       <!-- SLIDE 10: WHO THIS IS FOR (reframed from Market Size) -->
@@ -739,14 +911,22 @@
       <div class="slide" data-slide="13">
         <span class="slide-subtitle">Traction & Timeline</span>
         <h2 class="big-headline">This Isn't a Concept. It's Live.</h2>
-        <p class="one-liner">The platform is built, running, and ready for you to try today.</p>
+        <p class="one-liner" style="margin-bottom: 40px;">The platform is built, running, and ready for you to try today.</p>
+        <div class="qr-block">
+          <img src="assets/qr-website.svg" alt="QR code to logostaxsystems.com">
+          <span class="qr-caption">logostaxsystems.com</span>
+        </div>
       </div>
 
       <!-- SLIDE 13: LET'S TALK (reframed from The Ask) -->
       <div class="slide" data-slide="14">
         <span class="slide-subtitle">Get In Touch</span>
         <h2 class="big-headline">Let's Talk</h2>
-        <p class="one-liner" style="margin-bottom: 40px;">Find David or Abhishek after this—we'd love to hear about your business.</p>
+        <p class="one-liner" style="margin-bottom: 30px;">Find David or Abhishek after this—we'd love to hear about your business.</p>
+        <div class="qr-block" style="margin-bottom: 30px;">
+          <img src="assets/qr-meeting.svg" alt="QR code to book a meeting">
+          <span class="qr-caption">Scan to book a time with us</span>
+        </div>
         <p style="font-size: 1.1rem; color: var(--brand-cream);">
           David Gillilan, Founder &amp; CEO &nbsp;&middot;&nbsp; Abhishek Nagaraja, Lead Product Engineer<br>
           <span style="color: var(--brand-gold);">hello@logostaxsystems.com</span> &nbsp;&middot;&nbsp; logostaxsystems.com
@@ -782,14 +962,14 @@
     const notes = {
       1: "Welcome everyone. Logos is the Tax Operating System for Business Owners—AI powered, tax pro implemented, business owner owned. Not TurboTax, not a traditional CPA firm. We give business owners a permanent system that owns their tax history instead of letting it live inside someone else's office.",
       2: "The problem: tax pros aren't bad actors—they're stuck in a reactive cycle, scrambling every filing season. Meanwhile business owners rely on their CPA's own portal to store everything. The moment that CPA retires, closes shop, or the relationship ends, access disappears—sometimes overnight. Because re-gathering years of documents feels like such a heavy lift, most owners just stay put even when they're unhappy, and quietly overpay as a result.",
-      3: "This is the difference in one picture. Time: standard tax planning takes about four weeks—Logos gets you there in about 30 seconds. Money: a traditional advisor engagement runs $15,000 to $35,000—Logos is a flat monthly subscription, no big upfront retainer. User experience: the old way means chasing documents across emails and portals—with Logos it's one seamless, instant conversation.",
+      3: "This is the difference in one picture. Time: standard tax planning takes about four weeks—Logos gets you there in about 5 minutes. Money: a traditional advisor engagement runs $15,000 to $35,000—Logos is a flat monthly subscription, no big upfront retainer. User experience: the old way means chasing documents across emails and portals—with Logos it's one seamless, instant conversation.",
       4: "Logos flips that: your business owns a permanent, secure record of every document, every planning decision, every AI insight—independent of any single advisor. You can review AI recommendations on your own, or bring in your existing CPA or one of our vetted network pros to validate them.",
       5: "Five pillars, split into an input layer and an output layer. Vault is secure document storage. Ledger is your permanent, CPA-signed timeline. Citadel connects live financial data—Plaid, QuickBooks, IRS transcripts. All of that feeds the Logos Core, which powers two outputs: Logos itself, your 24/7 conversational AI strategist, and Enchiridion, the actionable playbook with dollar estimates and step-by-step guidance.",
       6: "Under the hood, Logos orchestrates real IRS transcript access, the full tax code and IRS publications, live financial feeds, and automated document parsing—so recommendations are grounded in your actual, current situation, not guesswork.",
       7: "Here's the thing: eventually, anyone can license IRS data or legal databases. That's infrastructure, not a moat. What's actually defensible is what we build on top of it—reasoning that persists, a system that runs year-round instead of once a year, and a body of intelligence about your specific business that only gets more valuable the longer you're with us.",
       8: "Logos doesn't replace your CPA. It finds the opportunity; then you choose how to act on it—implement it yourself, hand it to your existing CPA, or tap into our vetted network of tax professionals. Whoever executes it, the outcome gets written permanently into your Ledger.",
       9: "You can start for free—upload documents, ask Logos questions, see your potential savings. When you're ready for active account syncing, guided implementation, and CPA matching, you upgrade to Pro for one flat monthly price. No surprise retainers.",
-      10: "Traditional strategic tax planning runs $15,000 to $35,000 and takes about four weeks to turn around. Logos gets you a comparable analysis in about 30 seconds, for a flat monthly subscription—real savings, not just faster typing.",
+      10: "Traditional strategic tax planning runs $15,000 to $35,000 and takes about four weeks to turn around. Logos gets you a comparable analysis in about 5 minutes, for a flat monthly subscription—real savings, not just faster typing.",
       11: "This is built for businesses like the ones in this room: growing S-Corps, LLCs, and owner-operators who've outgrown basic filing software but aren't at the size where a $30,000-a-year advisory retainer makes sense yet. That gap is exactly where Logos lives.",
       12: "David Gillilan, our founder and CEO, brings 20+ years in strategic growth and spent years inside a CPA firm watching this problem firsthand—his own family lived the cost of losing financial guidance suddenly. Abhishek Nagaraja, our lead product engineer, built the entire platform end-to-end—the AI engine, the document pipeline, the advisor network, the Ledger.",
       13: "This isn't a pitch deck concept—it's live. The document intelligence pipeline, the CPA workspace, the observability stack, the AI advisor interface: all of it is built and running today. We're already taking it into the field, which is exactly what tonight is about.",
