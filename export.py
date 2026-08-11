@@ -86,10 +86,11 @@ def convert_pdf_to_pptx(pdf_path, pptx_path):
     print(f"Successfully generated {pptx_path}")
 
 if __name__ == "__main__":
-    html_file = "presentation.html"
-    pdf_file = "presentation.pdf"
-    pptx_file = "presentation.pptx"
-    
+    html_file = sys.argv[1] if len(sys.argv) > 1 else "presentation.html"
+    base = os.path.splitext(html_file)[0]
+    pdf_file = f"{base}.pdf"
+    pptx_file = f"{base}.pptx"
+
     check_and_install_dependencies()
     export_to_pdf(html_file, pdf_file)
     convert_pdf_to_pptx(pdf_file, pptx_file)
