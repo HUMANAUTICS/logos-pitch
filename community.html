@@ -607,7 +607,7 @@
 
     /* PRINT STYLES */
     /* MOBILE: stacked layouts, per-slide vertical scroll, swipe navigation */
-    @media (max-width: 800px) {
+    @media (max-width: 800px) and (orientation: portrait) {
       html, body { height: 100%; width: 100%; }
       body, .deck-container { height: 100dvh; width: 100%; }
       .slide {
@@ -617,6 +617,8 @@
         overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
       }
+      .slide > :first-child { margin-top: auto; }
+      .slide > :last-child { margin-bottom: auto; }
       .slide-title, .slide h1, .slide h2[style*="font-size"] { font-size: 1.85rem !important; line-height: 1.2; margin-bottom: 10px !important; }
       .slide-subtitle { font-size: 0.85rem; letter-spacing: 1.5px; margin-bottom: 20px; }
       .slide p { font-size: 1rem; }
@@ -655,6 +657,21 @@
       .tier-name { font-size: 1.6rem; }
       .team-row { flex-wrap: wrap; gap: 28px; justify-content: center; }
       .team-member { max-width: 100%; }
+    }
+
+    /* PHONE LANDSCAPE: keep the desktop layout, scaled (via --z) so the whole slide fits */
+    @media (orientation: landscape) and (max-height: 600px) {
+      .slide {
+        zoom: var(--z, 1);
+        width: var(--sw, 100%);
+        height: var(--sh, 100%);
+        padding-top: calc(52px / var(--z, 1));
+        padding-bottom: calc(24px / var(--z, 1));
+      }
+      .deck-controls { height: 44px; padding: 0 16px; }
+      .slide-counter { font-size: 0.75rem; }
+      .nav-btn { padding: 5px 12px; font-size: 0.8rem; }
+      .notes-toggle, .notes-drawer { display: none !important; }
     }
 
     @media print {
@@ -1128,6 +1145,18 @@
         }
       }, { passive: true });
     })();
+
+    // Landscape phones: scale the desktop layout so a whole slide fits the screen
+    function fitSlides() {
+      const land = window.matchMedia('(orientation: landscape) and (max-height: 600px)').matches;
+      const z = land ? Math.min(1, window.innerWidth / 1280, (window.innerHeight - 44) / 660) : 1;
+      const st = document.documentElement.style;
+      st.setProperty('--z', z);
+      st.setProperty('--sw', land ? (window.innerWidth / z) + 'px' : '100%');
+      st.setProperty('--sh', land ? ((window.innerHeight - 44) / z) + 'px' : '100%');
+    }
+    window.addEventListener('resize', fitSlides);
+    fitSlides();
 
     // Initialize
     updateSlide();
