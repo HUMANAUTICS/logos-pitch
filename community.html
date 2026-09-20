@@ -605,7 +605,6 @@
       margin-top: 40px;
     }
 
-    /* PRINT STYLES */
     /* MOBILE: stacked layouts, per-slide vertical scroll, swipe navigation */
     @media (max-width: 800px) and (orientation: portrait) {
       html, body { height: 100%; width: 100%; }
@@ -674,6 +673,7 @@
       .notes-toggle, .notes-drawer { display: none !important; }
     }
 
+    /* PRINT STYLES */
     @media print {
       @page {
         size: A4 landscape;
@@ -1135,9 +1135,13 @@
 
     // Swipe left/right to change slides on touch devices
     (function () {
-      let sx = 0, sy = 0;
-      document.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+      let sx = 0, sy = 0, ok = false;
+      document.addEventListener('touchstart', (e) => {
+        ok = e.touches.length === 1 && !e.target.closest('.pricing-table');
+        sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+      }, { passive: true });
       document.addEventListener('touchend', (e) => {
+        if (!ok) return;
         const dx = e.changedTouches[0].clientX - sx;
         const dy = e.changedTouches[0].clientY - sy;
         if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
