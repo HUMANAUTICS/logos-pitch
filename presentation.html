@@ -546,6 +546,50 @@
     }
 
     /* PRINT STYLES */
+    /* MOBILE: stacked layouts, per-slide vertical scroll, swipe navigation */
+    @media (max-width: 800px) {
+      html, body { height: 100%; width: 100%; }
+      body, .deck-container { height: 100dvh; width: 100%; }
+      .slide {
+        padding: 64px 20px 24px 20px;
+        justify-content: flex-start;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+      }
+      .slide-title, .slide h1, .slide h2[style*="font-size"] { font-size: 1.85rem !important; line-height: 1.2; margin-bottom: 10px !important; }
+      .slide-subtitle { font-size: 0.85rem; letter-spacing: 1.5px; margin-bottom: 20px; }
+      .slide p { font-size: 1rem; }
+      .card { padding: 20px; }
+      .card-metric { font-size: 2.6rem; }
+      .grid-2, .grid-3, .grid-5,
+      [style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+      .grid-5 { grid-template-columns: 1fr 1fr !important; }
+      [style*="display: flex"]:not([style*="flex-direction: column"]):not(.flow-step) { flex-wrap: wrap; }
+      [style*="width: 1"][style*="px"]:not([style*="border-radius: 50%"]),
+      [style*="width: 185px"], [style*="width: 180px"] { max-width: 100%; }
+      [style*="height: 100%"] { height: auto !important; }
+      .flywheel-container { zoom: 0.72; }
+      .arch-flow-container { height: auto !important; flex-direction: column !important; align-items: stretch !important; }
+      .notes-toggle, .notes-drawer { display: none !important; }
+      .fusion-container { flex-direction: column; gap: 12px; }
+      .fusion-node { width: 100%; }
+      .fusion-arrow { width: 2px; height: 24px; flex: none; }
+      .fusion-arrow::after { right: -4px; top: auto; bottom: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 8px solid var(--border-color); border-bottom: 0; }
+      .pricing-table { display: block; overflow-x: auto; }
+      .pricing-table th, .pricing-table td { padding: 10px 14px; }
+      .founder-story-quote { font-size: 1.1rem; }
+      img { max-width: 100%; }
+      .deck-controls { padding: 0 14px; height: 56px; }
+      .slide-counter { font-size: 0.8rem; }
+      .nav-btn { padding: 10px 14px; }
+      .nav-buttons { gap: 8px; }
+      .notes-drawer { bottom: 56px; height: 45%; padding: 16px 20px; }
+    }
+
     @media print {
       @page {
         size: A4 landscape;
@@ -1424,6 +1468,7 @@
         
         if (slideNum === currentSlide) {
           slide.classList.add('active');
+          slide.scrollTop = 0;
         } else if (slideNum < currentSlide) {
           slide.classList.add('previous');
         }
@@ -1487,6 +1532,19 @@
         toggleNotes();
       }
     });
+
+    // Swipe left/right to change slides on touch devices
+    (function () {
+      let sx = 0, sy = 0;
+      document.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+      document.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].clientX - sx;
+        const dy = e.changedTouches[0].clientY - sy;
+        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+          if (dx < 0) navigateNext(); else navigatePrev();
+        }
+      }, { passive: true });
+    })();
 
     // Initialize
     updateSlide();
